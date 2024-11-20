@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EnergyManager.Enums\EnergyManager.Enums.csproj" />
+  </ItemGroup>
+
 </Project>
