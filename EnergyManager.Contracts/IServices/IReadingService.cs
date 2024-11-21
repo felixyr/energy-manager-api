@@ -1,4 +1,4 @@
-﻿using EnergyManager.Contracts.IModels;
+﻿using EnergyManager.Models.Models;
 
 namespace EnergyManager.Contracts.IServices
 {
@@ -9,6 +9,6 @@ namespace EnergyManager.Contracts.IServices
         /// </summary>
         /// <param name="upload"></param>
         /// <returns></returns>
-        Task<IImport> ImportFromFile(IUpload upload);
+        Task<Import> ImportFromFile(Upload upload);
     }
 }
