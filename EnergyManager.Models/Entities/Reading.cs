@@ -1,4 +1,6 @@
 ﻿
+using EnergyManager.Models.Base;
+
 namespace EnergyManager.Models.Entities
 {
     public class Reading: Entity
