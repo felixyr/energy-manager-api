@@ -40,7 +40,7 @@ namespace EnergyManager.Data.DataContext
                     Name = "Jane Doe"
                 };
 
-                var result = await _userManager.CreateAsync(user, "test1234");
+                var result = await _userManager.CreateAsync(user, "Test1234");
 
                 if (!result.Succeeded)
                 {

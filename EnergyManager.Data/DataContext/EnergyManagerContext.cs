@@ -1,6 +1,7 @@
 ﻿using EnergyManager.Models.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace EnergyManager.Data.DataContext
 {
@@ -16,7 +17,7 @@ namespace EnergyManager.Data.DataContext
         {
             base.OnModelCreating(builder);
 
-            // Other mappings
+            builder.Entity<Account>().HasIndex(e => e.AccountId).IsUnique();
         }
     }
 }

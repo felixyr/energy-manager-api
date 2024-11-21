@@ -4,7 +4,8 @@ namespace EnergyManager.Models.Entities
 {
 
     public class Role : IdentityRole
-    {        
+    {
+        public Role() { }
         /// <summary>
         /// Initializes a new instance of <see cref="Role"/>.
         /// </summary>
