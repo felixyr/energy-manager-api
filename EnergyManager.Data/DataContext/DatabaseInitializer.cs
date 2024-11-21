@@ -1,9 +1,11 @@
-﻿using EnergyManager.Contracts.IDatabase;
+﻿using CsvHelper;
+using EnergyManager.Contracts.IDatabase;
+using EnergyManager.Models.Constants;
 using EnergyManager.Models.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System.Reflection;
+using System.Globalization;
 
 namespace EnergyManager.Data.DataContext
 {
@@ -22,6 +24,7 @@ namespace EnergyManager.Data.DataContext
         {
             await _context.Database.MigrateAsync();
             await SeedDefaultUserAsync();
+            await SeedTestAccountsAsync();  
         }
 
         private async Task SeedDefaultUserAsync()
@@ -46,6 +49,33 @@ namespace EnergyManager.Data.DataContext
                 }
 
                 _logger.LogInformation("Creation of default user completed successfully");
+            }
+        }
+
+        private async Task SeedTestAccountsAsync()
+        {
+            if (!await _context.Accounts.AnyAsync())
+            {
+                _logger.LogInformation("Seeding test accounts");
+
+                var testAccountsPath = Path.Combine(Environment.CurrentDirectory, Constants.Files, Constants.TestAccounts);
+
+                using var reader = new StreamReader(testAccountsPath);
+
+                using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+
+                var testAccounts = csv.GetRecords<Models.Models.Account>().ToList();
+
+                _context.Accounts.AddRange(testAccounts.Select(k => new Account
+                {
+                    AccountId = k.AccountId,
+                    FirstName = k.FirstName,
+                    LastName = k.LastName
+                }));
+
+                await _context.SaveChangesAsync();
+
+                _logger.LogInformation("Seeding test accounts");
             }
         }
     }
