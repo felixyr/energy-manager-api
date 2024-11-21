@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="33.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EnergyManager.Contracts\EnergyManager.Contracts.csproj" />
+    <ProjectReference Include="..\EnergyManager.Models\EnergyManager.Models.csproj" />
+  </ItemGroup>
+
 </Project>
