@@ -1,5 +1,5 @@
 ﻿
-namespace EnergyManager.Enums.Enums
+namespace EnergyManager.Models.Enums
 {
     public enum EntityStatus
     {

@@ -1,8 +1,7 @@
-﻿using EnergyManager.Contracts.IModels;
-
+﻿
 namespace EnergyManager.Models.Models
 {
-    public class Reading: IReading
+    public class Reading
     {
         public int AccountId { get; set; }
         public DateTime MeterReadingDateTime { get; set; }

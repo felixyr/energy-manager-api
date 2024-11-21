@@ -1,8 +1,7 @@
-﻿using EnergyManager.Contracts.IModels;
-
+﻿
 namespace EnergyManager.Models.Models
 {
-    public class Account: IAccount
+    public class Account
     {
         public int AccountId { get; set; }
         public string FirstName { get; set; }
