@@ -1,7 +1,7 @@
 ﻿using EnergyManager.Contracts.IServices;
+using EnergyManager.Models.Constants;
 using EnergyManager.Models.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace EnergyManager.Web.Controllers
 {
@@ -18,31 +18,43 @@ namespace EnergyManager.Web.Controllers
         }
 
         /// <summary>
-        /// Imports meter readings from provided file
+        /// Processes an uploaded file containing meter readings and persist the readings.
         /// </summary>
-        /// <param name="import">The meter readings file.</param>
-        /// <returns>Number of successful and failed readings.</returns>
+        /// <param name="upload">The file upload containing meter readings.</param>
+        /// <returns>An object that contains the number of succeeded and failed meter reading entries.</returns>
+        /// <remarks>Accepts a POST request to upload meter readings in a file as part of form data</remarks>
         [HttpPost("meter-reading-uploads")]
-        public async Task<Import> Import([FromForm] Upload upload)
+        public Statistics Import([FromForm] Upload upload)
         {
             try
-            {
+            {                
                 if (upload == null || upload.File == null || upload.File.Length == 0)
                 {
                     _logger.LogInformation("Invalid action parameters, missing or empty file provided");
 
-                    return new Import { Failed = 0, Succeeded = 0 };
+                    return new Statistics { Failed = 0, Succeeded = 0 };
+                }
+
+                // Get the file extension of the uploaded file
+                var extension = Path.GetExtension(upload.File.Name);
+
+                // Check if the file extension is supported
+                if (!Constants.SupportedExtensions.Contains(extension))
+                {                   
+                    _logger.LogInformation($"Unsupported file extension: {extension}");
+                    
+                    return new Statistics { Failed = 0, Succeeded = 0 };
                 }
 
                 _logger.LogInformation($"Processing uploaded file with name {upload.File.FileName}");
 
-                return await _readingService.ImportFromFile(upload);
+                return _readingService.ReadAndStoreReadings(upload);
             }
             catch (Exception exception)
             {
                 _logger.LogError(exception, "An error occurred processing file");
                 
-                return new Import { Failed = 0, Succeeded= 0 };
+                return new Statistics { Failed = 0, Succeeded= 0 };
             }
         }
     }
