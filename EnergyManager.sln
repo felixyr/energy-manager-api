@@ -3,19 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnergyManager.Web", "EnergyManager.Web\EnergyManager.Web.csproj", "{60C6059B-9D3C-46F9-9DBB-DE1314B5AEE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnergyManager.Web", "EnergyManager.Web\EnergyManager.Web.csproj", "{60C6059B-9D3C-46F9-9DBB-DE1314B5AEE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnergyManager.Tests", "EnergyManager.Tests\EnergyManager.Tests.csproj", "{7908ACED-76A7-4AA3-B731-B2E42BB08E9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnergyManager.Tests", "EnergyManager.Tests\EnergyManager.Tests.csproj", "{7908ACED-76A7-4AA3-B731-B2E42BB08E9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnergyManager.Models", "EnergyManager.Models\EnergyManager.Models.csproj", "{8B41A280-EA75-425B-A7A3-70F1BF54E034}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnergyManager.Models", "EnergyManager.Models\EnergyManager.Models.csproj", "{8B41A280-EA75-425B-A7A3-70F1BF54E034}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnergyManager.Services", "EnergyManager.Services\EnergyManager.Services.csproj", "{C166B237-504D-4CB8-ACFA-E55E54301B31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnergyManager.Services", "EnergyManager.Services\EnergyManager.Services.csproj", "{C166B237-504D-4CB8-ACFA-E55E54301B31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnergyManager.Contracts", "EnergyManager.Contracts\EnergyManager.Contracts.csproj", "{1D8A9559-9C90-4305-9A69-6AAE0A0CB176}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnergyManager.Contracts", "EnergyManager.Contracts\EnergyManager.Contracts.csproj", "{1D8A9559-9C90-4305-9A69-6AAE0A0CB176}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnergyManager.Data", "EnergyManager.Data\EnergyManager.Data.csproj", "{379F017C-4A35-4412-8634-A35F1E90CB67}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnergyManager.Enums", "EnergyManager.Enums\EnergyManager.Enums.csproj", "{607779C7-199F-46AF-A241-AC8439A31B9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnergyManager.Data", "EnergyManager.Data\EnergyManager.Data.csproj", "{379F017C-4A35-4412-8634-A35F1E90CB67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +45,6 @@ Global
 		{379F017C-4A35-4412-8634-A35F1E90CB67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{379F017C-4A35-4412-8634-A35F1E90CB67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{379F017C-4A35-4412-8634-A35F1E90CB67}.Release|Any CPU.Build.0 = Release|Any CPU
-		{607779C7-199F-46AF-A241-AC8439A31B9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{607779C7-199F-46AF-A241-AC8439A31B9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{607779C7-199F-46AF-A241-AC8439A31B9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{607779C7-199F-46AF-A241-AC8439A31B9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

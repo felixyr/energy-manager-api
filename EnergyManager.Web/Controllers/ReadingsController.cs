@@ -36,7 +36,7 @@ namespace EnergyManager.Web.Controllers
                 }
 
                 // Get the file extension of the uploaded file
-                var extension = Path.GetExtension(upload.File.Name);
+                var extension = Path.GetExtension(upload.File.FileName);
 
                 // Check if the file extension is supported
                 if (!Constants.SupportedExtensions.Contains(extension))

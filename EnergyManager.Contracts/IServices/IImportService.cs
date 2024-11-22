@@ -6,7 +6,7 @@ namespace EnergyManager.Contracts.IServices
     public interface IImportService
     {
         /// <summary>
-        /// Import readings from supplied file
+        /// Import meter readings from provided file
         /// </summary>
         /// <param name="formFile"></param>
         /// <returns></returns>

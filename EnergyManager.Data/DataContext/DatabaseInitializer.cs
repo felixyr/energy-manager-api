@@ -9,6 +9,9 @@ using System.Globalization;
 
 namespace EnergyManager.Data.DataContext
 {
+    /// <summary>
+    /// Initialises the database by seeding initial data
+    /// </summary>
     public class DatabaseInitializer : IDatabaseInitializer
     {
         private readonly EnergyManagerContext _context;
@@ -27,6 +30,10 @@ namespace EnergyManager.Data.DataContext
             await SeedTestAccountsAsync();  
         }
 
+        /// <summary>
+        /// Create initial admin user
+        /// </summary>
+        /// <returns></returns>
         private async Task SeedDefaultUserAsync()
         {
             if (!await _context.Users.AnyAsync())
@@ -52,6 +59,10 @@ namespace EnergyManager.Data.DataContext
             }
         }
 
+        /// <summary>
+        /// Seed initial test account data from .csv
+        /// </summary>
+        /// <returns></returns>
         private async Task SeedTestAccountsAsync()
         {
             if (!await _context.Accounts.AnyAsync())
