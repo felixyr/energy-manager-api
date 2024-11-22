@@ -23,9 +23,9 @@ namespace EnergyManager.Services.Utilities
         /// <param name="reading">The record to validate.</param>
         /// <param name="processedEntries">A list of already processed entries.</param>
         /// <returns>true if the record is valid, otherwise false.</returns>
-        public static bool IsValid(this Reading reading, List<string> processedEntries)
+        public static bool IsValid(this Reading reading, HashSet<string> processedEntries)
         {
-            // Ensure the Account ID is present
+            // Ensure the Account ID is present and valid
             if (reading.AccountId <= 0) return false;
 
             // Ensure meter reading value is in the NNNNN format (5 digits)
