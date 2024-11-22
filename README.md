@@ -1,8 +1,5 @@
 **Meter Reading Importer**
 
-The Meter Reading Importer is an application designed to process, validate and store meter readings uploaded via files, .csv being the only supported format at the moment.
-It ensures data integrity by validating accounts and preventing duplicate or outdated readings. The app leverages the repository pattern for efficient database interactions
-
 Features
 <ul>
   <li>Upload and process meter readings via file uploads.</li>
