@@ -4,6 +4,7 @@ using EnergyManager.Contracts.IUnitsOfWork;
 using ReadingEntity = EnergyManager.Models.Entities.Reading;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
+using CsvHelper;
 
 namespace EnergyManager.Services.Services
 {
@@ -29,20 +30,27 @@ namespace EnergyManager.Services.Services
             var readings = import.Readings.Select(k => new ReadingEntity
             {
                 AccountId = k.AccountId,
-                DateTime = k.MeterReadingDateTime,
+                // It's a requirement to store date in UTC in Postgres
+                DateTime = k.MeterReadingDateTime.ToUniversalTime(),
                 Value = k.MeterReadValue
             });
 
             // Commit the valid readings in the database
-            //BulkInsert(readings);
+            BulkInsert(readings);
 
             import.Statistics.Succeeded = readings.Count();
 
             return import.Statistics;  
         }
 
+        /// <summary>
+        /// Processes an uploaded file to extract and validate meter readings.
+        /// </summary>
+        /// <param name="formFile"></param>
+        /// <returns></returns>
         private Import GetReadings(IFormFile formFile)
         {
+            // Parse readings from the uploaded file
             var import = _importService.ImportReadingsFromFile(formFile);
 
             var readings = new List<Reading>();
@@ -59,6 +67,17 @@ namespace EnergyManager.Services.Services
 
                 var existingReading = GetLatestReadByAccountId(reading.AccountId);
 
+                var readingDateTimeUTC = reading.MeterReadingDateTime.ToUniversalTime();
+
+                // Check if the reading is already in the database based on exact match of date and value
+                if (existingReading != null && existingReading.DateTime == readingDateTimeUTC && existingReading.Value == reading.MeterReadValue)
+                {
+                    _logger.LogInformation($"Skipping duplicate reading with account ID {reading.AccountId}.");
+                    import.Statistics.Failed++;
+                    continue;
+                }
+
+                // Ensure that the reading is newer or equal in date to the latest existing reading
                 if (existingReading == null || reading.MeterReadingDateTime >= existingReading.DateTime)
                 {
                     readings.Add(reading);

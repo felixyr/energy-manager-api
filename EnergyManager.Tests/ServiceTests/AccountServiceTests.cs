@@ -4,7 +4,6 @@ using EnergyManager.Contracts.IUnitsOfWork;
 using EnergyManager.Models.Entities;
 using EnergyManager.Services.Services;
 using Moq;
-using Xunit;
 
 namespace EnergyManager.Tests.ServiceTests
 {
